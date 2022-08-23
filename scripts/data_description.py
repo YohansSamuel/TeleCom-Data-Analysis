@@ -26,7 +26,19 @@ class DataDescription():
 
     def df_null_column_percentage(self):
         '''
-        Display toal null percentage of the columns
+        Display total null percentage of the dataset
+        '''
+
+        num_rows, num_columns = self.df.shape
+        df_size = num_rows * num_columns
+        
+        null_size = self.df.isnull().sum()
+        percentage = round((null_size / df_size) * 100, 2)
+        print(percentage)
+
+    def df_total_null_column_percentage(self):
+        '''
+        Display total null percentage of the dataset
         '''
 
         num_rows, num_columns = self.df.shape
