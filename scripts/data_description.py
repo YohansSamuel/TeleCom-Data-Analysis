@@ -41,6 +41,5 @@ class DataDescription():
             Displays the size of the dataframe
         '''
         value = self.df.shape
-        print(
-            f"The DataFrame containes \n {value[0]} rows \n {value[1]} columns.")
-        return value
+        print(f"The DataFrame containes \n {value[0]} rows \n {value[1]} columns.")
+        print(self.df.shape)
