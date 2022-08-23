@@ -2,7 +2,7 @@ import pandas as pd;
 
 class DataDescription():
     def __init__(self, df):
-        self.df = df.copy()
+        self.df = df
 
     def df_columns_list(self):
         '''
@@ -32,6 +32,15 @@ class DataDescription():
 
     def df_head(self,top = 5):
         '''
-        Display top 5(also can accepet from user) rows
+        Display top 5(also can accept from user) rows
         '''
         print(self.df.head(top))
+
+    def df_size(self):
+        '''
+            Displays the size of the dataframe
+        '''
+        value = self.df.shape
+        print(
+            f"The DataFrame containes \n {value[0]} rows \n {value[1]} columns.")
+        return value
