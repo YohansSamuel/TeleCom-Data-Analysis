@@ -1,13 +1,9 @@
 import pandas as pd;
 
-class DataLoader():
-    def __init__(self, df):
-        self.df = df.copy()
-        
-    # list of possible na_values
-    na_values = ["n/a", "na", 'none', "-", "--", None, '?']
+# list of possible na_values
+missing_values = ["n/a", "na", 'none', "-", "--", None, '?']
 
-    def load_data_from_csv(filepath: str, na_values: list = []) -> pd.DataFrame:
+def load_data_from_csv(filepath: str, na_values: list = []) -> pd.DataFrame:
         """
             A  function which returns a dataframe from a specified .csv file
             Parameters
@@ -31,7 +27,7 @@ class DataLoader():
             print("Error:\n\tCould not find specified .csv file")
 
 
-    def load_data_from_xsl(filepath: str, na_values: list = []) -> pd.DataFrame:
+def load_data_from_xsl(filepath: str, na_values: list = []) -> pd.DataFrame:
         """
             A  function which returns a dataframe from a specified .xslx file
             Parameters
