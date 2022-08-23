@@ -2,17 +2,7 @@ import pandas as pd
 import numpy as np;
 
 class DataCleaning:
-    def __init__(self, df: pd.DataFrame) -> None:
-        """
-        Returns a DataCleaning Object with the passed DataFrame
-        ----------
-        df:
-            Type: pd.DataFrame
-
-        Returns
-        -------
-        None
-        """
+    def __init__(self, df):
         self.df = df
 
     def remove_unwanted_columns(self, columns: list) -> pd.DataFrame:
@@ -30,9 +20,10 @@ class DataCleaning:
         self.df.drop(columns, axis=1, inplace=True)
         return self.df
 
-    def drop_column_with_many_null_values(self):
+    def drop_column_with_many_null_values(self)-> pd.DataFrame:
         '''
-        Return List of Columns which contain more than 30% of null values
+        drop list of columns which contain more than 30% of null values and 
+        returns a dataframe
         '''
         df_size = self.df.shape[0]
         
@@ -46,4 +37,21 @@ class DataCleaning:
             if(percentage > 30):
                 many_null_columns.append(column)
         
-        return many_null_columns
+        print(many_null_columns)
+        self.df.drop(many_null_columns, axis=1, inplace=True)
+        return self.df
+
+    def remove_duplicates(self) -> pd.DataFrame:
+        """
+        Returns a DataFrame where duplicate rows are removed
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        pd.DataFrame
+        """
+        removables = self.df[self.df.duplicated()].index
+        self.df.drop(index=removables, inplace=True)
+        return self.df
