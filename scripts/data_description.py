@@ -24,6 +24,18 @@ class DataDescription():
 
         print(self.df.isnull().sum())
 
+    def df_null_column_percentage(self):
+        '''
+        Display toal null percentage of the columns
+        '''
+
+        num_rows, num_columns = self.df.shape
+        df_size = num_rows * num_columns
+        
+        null_size = (self.df.isnull().sum()).sum()
+        percentage = round((null_size / df_size) * 100, 2)
+        print(f"The dataset contains { percentage }% missing values.")
+
     def df_skewness(self):
         '''
         Display skewness of each column
@@ -41,5 +53,5 @@ class DataDescription():
             Displays the size of the dataframe
         '''
         value = self.df.shape
-        print(f"The DataFrame containes \n {value[0]} rows \n {value[1]} columns.")
-        print(self.df.shape)
+        print(f"The DataFrame containes  {value[0]} rows and {value[1]} columns")
+        # print(self.df.shape)
