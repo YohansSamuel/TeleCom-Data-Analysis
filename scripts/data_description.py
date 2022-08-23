@@ -34,7 +34,7 @@ class DataDescription():
         
         null_size = (self.df.isnull().sum())
         percentage = round((null_size / df_size) * 100, 2)
-        print(f"The dataset contains { percentage }% missing values.")
+        print(f"The dataset contains \n{ percentage }")
 
     def df_total_null_column_percentage(self):
         '''
@@ -67,8 +67,4 @@ class DataDescription():
         value = self.df.shape
         print(f"The DataFrame containes  {value[0]} rows and {value[1]} columns")
         # print(self.df.shape)
-
-    def df_memory_usage(self):
-        value = self.df.memory_usage(deep=True).sum()
-        print(f"Current DataFrame memory usage:\n{value}")
-        return value
+    
