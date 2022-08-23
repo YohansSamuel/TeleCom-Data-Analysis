@@ -55,3 +55,13 @@ class DataCleaning:
         removables = self.df[self.df.duplicated()].index
         self.df.drop(index=removables, inplace=True)
         return self.df
+
+    def convert_to_datetime(self, df):
+        """
+        convert start and end column to datetime
+        """
+
+        df['Start'] = pd.to_datetime(df['Start'])
+        df['End'] = pd.to_datetime(df['End'])
+
+        return df
