@@ -29,3 +29,9 @@ class DataDescription():
         Display skewness of each column
         '''
         print(self.df.skew())
+
+    def df_head(self,top = 5):
+        '''
+        Display top 5(also can accepet from user) rows
+        '''
+        print(self.df.head(top))
