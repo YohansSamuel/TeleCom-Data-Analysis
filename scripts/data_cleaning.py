@@ -65,3 +65,11 @@ class DataCleaning:
         df['End'] = pd.to_datetime(df['End'])
 
         return df
+
+    def fill_numerical_column(self, column):
+        '''
+        Fill numerical null values with median
+        '''
+ 
+        for col in column:
+            self.df[col] = self.df[col].fillna(self.df[col].median())
