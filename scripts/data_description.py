@@ -4,7 +4,7 @@ class DataDescription():
     def __init__(self, df):
         self.df = df.copy()
 
-    def get_columns_list(self):
+    def df_columns_list(self):
         '''
         Return Column list of the Dataframe
         '''
@@ -16,3 +16,10 @@ class DataDescription():
         '''
 
         print(self.df.info())
+
+    def df_null_counts(self):
+        '''
+        Display Null Counts of each column
+        '''
+
+        print(self.df.isnull().sum())
