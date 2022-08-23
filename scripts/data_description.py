@@ -9,3 +9,10 @@ class DataDescription():
         Return Column list of the Dataframe
         '''
         return self.df.columns.to_list()
+
+    def df_detail_info(self):
+        '''
+        Display the detail of the DataFrame information
+        '''
+
+        print(self.df.info())
