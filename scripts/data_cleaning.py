@@ -53,7 +53,7 @@ class DataCleaning:
         pd.DataFrame
         """
         removables = self.df[self.df.duplicated()].index
-        self.df.drop(index=removables, inplace=True)
+        self.df.drop(index=removables,inplace=True) # self.df.drop(index=removables,axis=0,inplace=True)
         return self.df
 
     def convert_to_datetime(self, df):
@@ -86,3 +86,21 @@ class DataCleaning:
             self.df[col] = self.df[col].fillna(mode)
         
         return self.df
+
+    def save_cleaned_data(self, name: str):
+        """
+        The objects dataframe gets saved with the specified name 
+        Parameters
+        ----------
+        name:
+            Type: str
+
+        Returns
+        -------
+        None
+        """
+        try:
+            self.df.to_csv(name)
+
+        except:
+            print("Failed to save data")
