@@ -26,19 +26,16 @@ class UserOverview():
             print(f"****{ manufacturer} ****")
             print(result)
         return top5_by_top3
-
-    def convert_bytes_to_kbytes(self, column):
-        """
-            This function takes the dataframe and the column which has the bytes values
-            returns the kilobytes of that value            
-        """        
+    # convert bytes into kilobytes
+    def convert_bytes_to_kbytes(self, column):       
         Total_kb = []
         for i in column.values:
             i = i / 1024
             Total_kb.append(i)
 
         return Total_kb
-
+     
+    # convert bytes into megabytes
     def convert_bytes_to_megabytes(self, column):
         """
             This function takes the dataframe and the column which has the bytes values
@@ -51,7 +48,8 @@ class UserOverview():
             Total_MB.append(i)
 
         return Total_MB
-        
+
+    # convert milliseconds into seconds
     def convert_ms_to_sec(self, column):
         """
             This function takes the dataframe and the millisecond column values
