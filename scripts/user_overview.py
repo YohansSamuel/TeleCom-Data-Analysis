@@ -15,11 +15,26 @@ class UserOverview():
         return top_manufacturers
     # get the top handsets per top manufacturers
     def get_top_handset_by_top_manufacturer(self,handset_num,manufacturer_num):
-            top_3_manufacturers = self.get_top_manufacturers(manufacturer_num)
+        top5_by_top3 = []
+        top_3_manufacturers = self.get_top_manufacturers(manufacturer_num)
 
-            manufacturers = self.df.groupby("Handset Manufacturer")
+        manufacturers = self.df.groupby("Handset Manufacturer")
 
-            for manufacturer in top_3_manufacturers.index:
-                result = manufacturers.get_group(manufacturer).groupby("Handset Type")['MSISDN/Number'].nunique().nlargest(handset_num)
-                print(f"****{ manufacturer} ****")
-                print(result)
+        for manufacturer in top_3_manufacturers.index:
+            result = manufacturers.get_group(manufacturer).groupby("Handset Type")['MSISDN/Number'].nunique().nlargest(handset_num)
+            top5_by_top3.append(result)
+            print(f"****{ manufacturer} ****")
+            print(result)
+        return top5_by_top3
+
+    def convert_bytes_to_kbytes(self, column):
+        """
+            This function takes the dataframe and the column which has the bytes values
+            returns the kilobytes of that value            
+        """        
+        Total_kb = []
+        for i in column.values:
+            i = i / 1024
+            Total_kb.append(i)
+
+        return Total_kb
