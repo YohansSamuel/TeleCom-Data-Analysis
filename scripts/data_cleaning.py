@@ -108,3 +108,5 @@ class DataCleaning:
     def fix_outlier(df, column):
         df[column] = np.where(df[column] > df[column].quantile(0.95), df[column].mode(),df[column])
         return df[column]
+
+    
