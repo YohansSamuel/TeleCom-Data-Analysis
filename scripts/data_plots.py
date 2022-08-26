@@ -15,6 +15,18 @@ def plot_hist(df:pd.DataFrame, column:str, color:str)->None:
     plt.title(f'Distribution of {column}', size=20, fontweight='bold')
     plt.show()
 
+def plot_mult_hist(sr, rows, cols, title_text, subplot_titles, interactive=False):
+    fig = make_subplots(rows=rows, cols=cols, subplot_titles=subplot_titles)
+    for i in range(rows):
+        for j in range(cols):
+            x = ["-> " + str(i) for i in sr[i+j].index]
+            fig.add_trace(go.Bar(x=x, y=sr[i+j].values), row=i+1, col=j+1)
+    fig.update_layout(showlegend=False, title_text=title_text)
+    if(interactive):
+        fig.show()
+    else:
+        return Image(pio.to_image(fig, format='png', width=1200))
+
 def plot_count(df:pd.DataFrame, column:str) -> None:
     plt.figure(figsize=(12, 7))
     sns.countplot(data=df, x=column)
