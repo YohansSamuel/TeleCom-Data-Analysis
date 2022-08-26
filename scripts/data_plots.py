@@ -43,6 +43,15 @@ def plot_bar(df:pd.DataFrame, x_col:str, y_col:str, title:str, xlabel:str, ylabe
     plt.ylabel(ylabel, fontsize=16)
     plt.show()
 
+def plot_bar_columns(column, title, xlabel, ylabel):
+    plt.figure(figsize=(10,5))
+    sns.barplot(x=column.index, y=column.values) 
+    plt.title(title, size=14, fontweight="bold")
+    plt.xlabel(xlabel, size=13, fontweight="bold") 
+    plt.ylabel(ylabel, size=13, fontweight="bold")
+    plt.xticks(rotation=90)
+    plt.show() 
+
 def plot_heatmap(df:pd.DataFrame, title:str, cbar=False)->None:
     plt.figure(figsize=(12, 7))
     sns.heatmap(df, annot=True, cmap='viridis', vmin=0, vmax=1, fmt='.2f', linewidths=.7, cbar=cbar )
