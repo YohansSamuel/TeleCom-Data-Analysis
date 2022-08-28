@@ -36,12 +36,16 @@ def user_overview_analysis():
     top_10_handsets = user_ov.get_top_handsets(10)
     st.write(top_10_handsets)
 
+    fig = go.Figure(go.Pie(labels = top_10_handsets.index,values = top_10_handsets.values))
+    st.header("Top 10 Handset Type used by customers")
+    st.plotly_chart(fig)
+
     # display top 3 manufacturers
     st.header('Display top 3 handset manufacturers')
     top_3_manufacturers = user_ov.get_top_manufacturers(3)
     st.write(top_3_manufacturers)
 
-    
+       
     # display the top_handsets result in bar graph
     # plt.figure(figsize=(10,5))
     # sns.barplot(x=top_3_manufacturers.index, y=top_3_manufacturers.values)
@@ -82,10 +86,17 @@ def user_engagement_analysis():
 # 
 def user_experience_analysis():
     st.title("User Experience Analysis")
+    st.header('Sample Data from the experience dataset')
+    df = pd.read_csv('./data/user_experience.csv',index_col=0)
+    st.write(df.head(10))
+
+    st.bar_chart(df['Total Avg RTT (ms)'])
 
 # 
 def user_satisfaction_analysis():
     st.title("User Satisfaction Analysis")
+    df = pd.read_csv('./data/user_satisfaction.csv',index_col=0)
+    st.write(df.head(10))
 
 
 pages = {
