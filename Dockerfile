@@ -1,11 +1,15 @@
-FROM python:3.9-slim
+FROM python:3.7-slim
 
-COPY requirements.txt .
+WORKDIR /app
+
+COPY requirements.txt ./requirements.txt
 
 RUN pip install -r requirements.txt
 
+EXPOSE 8501
 
-WORKDIR /app
-COPY . /app/
+COPY . /app
 
-CMD ["python3"],"app.py",CMD["python3","m","streamlit","RUN","--host:0.0.0.0"]
+ENTRYPOINT [ "streamlit" ,"run"]
+
+CMD [ "dashboard/app.py" ]
