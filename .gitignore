@@ -4,3 +4,4 @@ scripts/__pycache__/data_description.cpython-39.pyc
 scripts/__pycache__/data_loading.cpython-39.pyc
 scripts/__pycache__/data_plots.cpython-39.pyc
 scripts/__pycache__/user_overview.cpython-39.pyc
+dashboard/__pycache__/user_engagement_dashboard.cpython-39.pyc
