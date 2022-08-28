@@ -90,7 +90,11 @@ def user_experience_analysis():
     df = pd.read_csv('./data/user_experience.csv',index_col=0)
     st.write(df.head(10))
 
+    st.header('Total Average RTT in ms')
     st.bar_chart(df['Total Avg RTT (ms)'])
+
+    st.header('Total Average TCP in Bytes')
+    st.bar_chart(df['Total Avg TCP (Bytes)'])
 
 # 
 def user_satisfaction_analysis():
