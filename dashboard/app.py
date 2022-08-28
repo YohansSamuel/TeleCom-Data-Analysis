@@ -21,12 +21,12 @@ def user_overview_analysis():
     st.title("User Overview Analysis")
     
     # original dataset
-    st.header('Sample Data from the original dataset')
+    st.markdown(f'<h1 style="color:green;font-size:24px;">{"Sample Data from the original dataset"}</h1>', unsafe_allow_html=True)
     df = pd.read_csv("./data/telecom_data_source.csv",index_col=0)
     st.write(df.head(10))
 
     # cleaned dataset
-    st.header('Sample Data from the cleaned dataset')
+    st.markdown(f'<h1 style="color:green;font-size:24px;">{"Sample Data from the cleaned dataset"}</h1>', unsafe_allow_html=True)
     df = pd.read_csv("./data/cleaned_telecom_data_source.csv",index_col=0)
     st.write(df.head(10))
     
@@ -95,6 +95,8 @@ def user_experience_analysis():
 
     st.header('Total Average TCP in Bytes')
     st.bar_chart(df['Total Avg TCP (Bytes)'])
+
+    
 
 # 
 def user_satisfaction_analysis():
